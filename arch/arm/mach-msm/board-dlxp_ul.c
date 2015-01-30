@@ -422,6 +422,7 @@ static struct ion_cp_heap_pdata cp_mm_dlxp_ul_ion_pdata = {
 	.reusable = FMEM_ENABLED,
 	.mem_is_fmem = FMEM_ENABLED,
 	.fixed_position = FIXED_MIDDLE,
+	.no_nonsecure_alloc = 0,
 };
 
 static struct ion_cp_heap_pdata cp_mfc_dlxp_ul_ion_pdata = {
@@ -430,6 +431,7 @@ static struct ion_cp_heap_pdata cp_mfc_dlxp_ul_ion_pdata = {
 	.reusable = 0,
 	.mem_is_fmem = FMEM_ENABLED,
 	.fixed_position = FIXED_HIGH,
+    .no_nonsecure_alloc = 0,
 };
 
 static struct ion_co_heap_pdata co_dlxp_ul_ion_pdata = {
@@ -905,10 +907,10 @@ static struct htc_battery_platform_data htc_battery_pdev_data = {
 	.igauge.get_battery_temperature = pm8921_get_batt_temperature,
 	.igauge.get_battery_id = pm8921_get_batt_id,
 	.igauge.get_battery_soc = pm8921_bms_get_batt_soc,
+    .igauge.enter_qb_mode = pm8921_bms_enter_qb_mode,
+    .igauge.exit_qb_mode = pm8921_bms_exit_qb_mode,
+    .igauge.qb_mode_pwr_consumption_check = pm8921_qb_mode_pwr_consumption_check,	
 	.igauge.get_battery_cc = pm8921_bms_get_batt_cc,
-	.igauge.store_battery_data = pm8921_bms_store_battery_data_emmc,
-	.igauge.store_battery_ui_soc = pm8921_bms_store_battery_ui_soc,
-	.igauge.get_battery_ui_soc = pm8921_bms_get_battery_ui_soc,
 	.igauge.is_battery_temp_fault = pm8921_is_batt_temperature_fault,
 	.igauge.is_battery_full = pm8921_is_batt_full,
 	.igauge.get_attr_text = pm8921_gauge_get_attr_text,
